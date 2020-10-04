@@ -8,16 +8,20 @@ window.generator = generator;
 
 function generateSudoku() {
   const raw = generator.makepuzzle();
-  const rawSolution= generator.solvepuzzle(raw)
+  const rawSolution = generator.solvepuzzle(raw);
   console.log(raw);
-  
 
-  const formatted=raw.map((e)=>e===null?null:e+1)
-  const formattedSolution= rawSolution.map(e=>e+1);
-  const result = { rows: [],  solution:formattedSolution};
-  
+  const formatted = raw.map((e) => (e === null ? null : e + 1));
+  const formattedSolution = rawSolution.map((e) => e + 1);
+  const result = {
+    rows: [],
+    solution: formattedSolution,
+    startTime: new Date(),
+    solvedTime: null,
+  };
+
   console.log("Log", result.solution);
- // result.solution = result.solution.map((e) => e + 1);
+  // result.solution = result.solution.map((e) => e + 1);
 
   for (let i = 0; i < 9; i++) {
     const row = { cols: [], index: i };
@@ -61,18 +65,28 @@ class App extends Component {
     this.setState(
       produce((state) => {
         state.sudoku.rows[e.row].cols[e.col].value = e.value;
+        console.log("change handler")
+        if (!state.sudoku.solvedTime) {
+          console.log("check solution",)
+          const solved = checkSolution(state.sudoku);
+           if(solved){
+             console.log("solved");
+             state.sudoku.solveTime=new Date();
+           }
+        }
       })
     );
   };
 
+  handleSolving = (state) => {};
+
   solveSudoku = (e) => {
+    console.log(this.state.sudoku);
     this.setState(
       produce((state) => {
         state.sudoku.rows.forEach((row) => {
           row.cols.forEach((col) => {
-            if (!col.readonly) {
-              col.value = state.sudoku.solution[col.row * 9 + col.col];
-            }
+            col.value = state.sudoku.solution[col.row * 9 + col.col];
           });
         });
       })
