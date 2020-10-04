@@ -64,7 +64,7 @@ class App extends Component {
     this.setState(
       produce((state) => {
         state.sudoku.rows[e.row].cols[e.col].value = e.value;
-        console.log("change handler")
+       
         if (!state.sudoku.solvedTime) {
           const solved = checkSolution(state.sudoku);
            if(solved){

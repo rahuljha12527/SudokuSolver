@@ -5,7 +5,7 @@ import Result from './Result';
 
 
 export default class SudokuBoard extends Component {
-  render() {
+  render() { 
     const { sudoku,onChange } = this.props;
     return (    
       <div>
