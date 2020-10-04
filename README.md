@@ -68,4 +68,4 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
  ### Deploy project
- <a href="https://sudoku-solver-ca0c6.web.app/">Link</a>
+ <a href="https://sudoku-solver-ca0c6.web.app/">Project Link</a>
