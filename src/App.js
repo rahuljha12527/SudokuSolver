@@ -8,10 +8,16 @@ window.generator = generator;
 
 function generateSudoku() {
   const raw = generator.makepuzzle();
+  const rawSolution= generator.solvepuzzle(raw)
   console.log(raw);
-  const result = { rows: [] };
+  
 
-  result.solution = generator.solvepuzzle(raw);
+  const formatted=raw.map((e)=>e===null?null:e+1)
+  const formattedSolution= rawSolution.map(e=>e+1);
+  const result = { rows: [],  solution:formattedSolution};
+  
+  console.log("Log", result.solution);
+ // result.solution = result.solution.map((e) => e + 1);
 
   for (let i = 0; i < 9; i++) {
     const row = { cols: [], index: i };
