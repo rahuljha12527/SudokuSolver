@@ -4,7 +4,6 @@ import "./App.css";
 import produce from "immer";
 import SudokuBoard from "./componenets/SudokuBoard";
 
-window.generator = generator;
 
 function generateSudoku() {
   const raw = generator.makepuzzle();
@@ -67,10 +66,8 @@ class App extends Component {
         state.sudoku.rows[e.row].cols[e.col].value = e.value;
         console.log("change handler")
         if (!state.sudoku.solvedTime) {
-          console.log("check solution",)
           const solved = checkSolution(state.sudoku);
            if(solved){
-             console.log("solved");
              state.sudoku.solveTime=new Date();
            }
         }
@@ -81,7 +78,7 @@ class App extends Component {
   handleSolving = (state) => {};
 
   solveSudoku = (e) => {
-    console.log(this.state.sudoku);
+   
     this.setState(
       produce((state) => {
         state.sudoku.rows.forEach((row) => {
