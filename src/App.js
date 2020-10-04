@@ -8,12 +8,12 @@ window.generator = generator;
 function generateSudoku() {
   const raw = generator.makepuzzle();
   console.log(raw);
-  const result = { row: [] };
+  const result = { rows: [] };
 
   for (let i = 0; i < 9; i++) {
-    const row = { cols: [], index: 1 };
+    const row = { cols: [], index: i };
     for (let j = 0; j < 9; j++) {
-      const value = row[i * 9];
+      const value = row[i*9+j];
       const col = {
         row: i,
         col: j,
@@ -22,7 +22,7 @@ function generateSudoku() {
       };
       row.cols.push(col);
     }
-    result.row.push(row);
+    result.rows.push(row);
   }
   return result;
 }
