@@ -13,7 +13,7 @@ function generateSudoku() {
   for (let i = 0; i < 9; i++) {
     const row = { cols: [], index: i };
     for (let j = 0; j < 9; j++) {
-      const value = row[i*9+j];
+      const value = raw[i*9+j];
       const col = {
         row: i,
         col: j,
